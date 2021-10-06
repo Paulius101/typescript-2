@@ -35,7 +35,7 @@ class Trikampis {
         this.a = a;
         this.b = b;
         this.c = c;
-        let duomenys = {};
+        let duomenys = {}
     }
 
     public spasudintiDuomenis(): void {

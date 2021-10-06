@@ -3,6 +3,7 @@ class Trikampis {
         this.a = a;
         this.b = b;
         this.c = c;
+        let duomenys = {};
     }
     spasudintiDuomenis() {
         console.log(`Krastine a: ${this.a}`);

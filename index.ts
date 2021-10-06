@@ -70,12 +70,12 @@ class Trikampis {
     }
 
     public get arTrikampisStatusis(): boolean {
-        return this.a + this.b === this.c ||
-            this.b + this.c === this.a ||
-            this.a + this.c === this.b;
+        return this.a ** 2 + this.b ** 2 === this.c ** 2 ||
+            this.b ** 2 + this.c ** 2 === this.a ** 2 ||
+            this.a ** 2 + this.c ** 2 === this.b ** 2;
     }
 
-    public get 
+
 }
 
 const trikampis1 = new Trikampis(2, 3, 4);

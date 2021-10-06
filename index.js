@@ -33,9 +33,9 @@ class Trikampis {
             this.a + this.c > this.b;
     }
     get arTrikampisStatusis() {
-        return this.a + this.b === this.c ||
-            this.b + this.c === this.a ||
-            this.a + this.c === this.b;
+        return Math.pow(this.a, 2) + Math.pow(this.b, 2) === Math.pow(this.c, 2) ||
+            Math.pow(this.b, 2) + Math.pow(this.c, 2) === Math.pow(this.a, 2) ||
+            Math.pow(this.a, 2) + Math.pow(this.c, 2) === Math.pow(this.b, 2);
     }
 }
 const trikampis1 = new Trikampis(2, 3, 4);

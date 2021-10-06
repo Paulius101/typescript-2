@@ -1,27 +1,40 @@
 class Trikampis {
-    a: number
-    b: number
-    c:number
+        a: number;
+        b: number;
+        c:number;
 
-    constructor (a: number, b: number, c: number) {
-    this.a = a;
-    this.b = b;
-    this.c= c;
+        public constructor (a: number, b: number, c: number) {
+            this.a = a;
+            this.b = b;
+            this.c= c;
+        }
+
+ public spausdintiDuomenis(): void {
+            console.log(`Krastine a: ${this.a}`);
+            console.log(`Krastine b: ${this.b}`);
+            console.log(`Krastine c: ${this.c}`);
+            console.log(`Perimetras ${this.apskaiciuotiPerimetra()}`)
+            console.log(`Egzistuoja? ${this.trikampioPatikrinimas()}`)
     }
 
-    spausdintiDuomenis() {
-        console.log(`Krastine a: ${this.a}`);
-        console.log(`Krastine a: ${this.b}`);
-        console.log(`Krastine a: ${this.c}`);
+        public apskaiciuotiPerimetra(): number{
+            return this.a + this.b + this.c
     }
+
+        public trikampioPatikrinimas():boolean {
+            if(this.a + this.b > this.c && this.a + this.c > this.b && this.b + this.c > this.a) {
+            return true;
+        }
+            else return false;
+        } 
 
 }
 
 const trikampis1 = new Trikampis(5,6,7);
-const trikampis2= new Trikampis(7,3,4);
+const trikampis2= new Trikampis(7,3,100);
 
 console.log(trikampis1.spausdintiDuomenis());
-
+console.log(trikampis2.spausdintiDuomenis());
 
 
     /**

@@ -24,6 +24,16 @@
  * 8. Papildykite klasę metodu, kuris nurodo, ar trikampis yra
  * statusis.
  *
+ * 9. Sukurkite masyvą, kuris saugo trikampių reikšmes,
+ * panaudodami ciklą atspausdinkite visų masyvę esančių trikampių
+ * duomenis.
+ *
+ * 10. ND: Papildykite programą funkcionalumu, kuris trikampių
+ * masyvą užpildo trikampiais (50 reikšmių), kurių kraštinės yra
+ * atsitiktinės reikšmės.
+ *
+ * Papildoma: Vėliau programa masyvą prafiltravus
+ * paliktų tik egzistuojančius trikampius ir atspausdintų jų duomenis.
  */
 
 class Trikampis {
@@ -35,7 +45,6 @@ class Trikampis {
         this.a = a;
         this.b = b;
         this.c = c;
-        let duomenys = {}
     }
 
     public spasudintiDuomenis(): void {
@@ -50,11 +59,8 @@ class Trikampis {
             console.log("Trikampis neegzistuoja!");
         }
 
-        if (this.arTrikampisStatusis) {
-            console.log("Trikampis statusis")
-        } else {
-            console.log("Trikampis ne statusis");
-        }
+        console.log(`Trikampis ${this.arTrikampisEgzistuoja ? "egzistuoja" : "neegzistuoja"}.`);
+        console.log(`Trikampis ${this.arStatus ? "yra" : "nera"} statusis.`);
 
         console.log("---------");
     }
@@ -63,23 +69,28 @@ class Trikampis {
         return this.a + this.b + this.c;
     }
 
+    public get arStatus(): boolean {
+        const a2 = this.a * this.a;
+        const b2 = this.b * this.b;
+        const c2 = this.c * this.c;
+
+        return a2 + b2 === c2 ||
+            a2 + c2 === b2 ||
+            b2 + c2 === a2;
+    }
+
     public get arTrikampisEgzistuoja(): boolean {
         return this.a + this.b > this.c &&
             this.b + this.c > this.a &&
             this.a + this.c > this.b;
     }
-
-    public get arTrikampisStatusis(): boolean {
-        return this.a ** 2 + this.b ** 2 === this.c ** 2 ||
-            this.b ** 2 + this.c ** 2 === this.a ** 2 ||
-            this.a ** 2 + this.c ** 2 === this.b ** 2;
-    }
-
-
 }
 
-const trikampis1 = new Trikampis(2, 3, 4);
-const trikampis2 = new Trikampis(6, 3, 8);
+const trikampiai: Trikampis[] = [new Trikampis(3, 4, 5)];
+trikampiai.push(new Trikampis(6, 3, 8));
 
-trikampis1.spasudintiDuomenis();
-trikampis2.spasudintiDuomenis();
+for (const trikampis of trikampiai) {
+    trikampis.spasudintiDuomenis();
+}
+
+

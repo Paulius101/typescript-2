@@ -130,6 +130,14 @@ const selectors = {
     roomWithSpa: document.getElementById('roomsWithSpa')
 }
 
+function renderRoom(room: Room): void {
+
+}
+
+function renderSpa(spa: Spa): void {
+
+}
+
 const roomOrder: Room[] = [];
 const spaOrder: Spa[] = [];
 
@@ -148,10 +156,15 @@ selectors.button.addEventListener("click", (e) => {
     const poolSize = Number(selectors.spaSizeInput.value);
     const poolTemp = Number(selectors.temperatureInput.value);
 
-    const newRoom = new Room(roomSize, occupants);
-    const newSpa = new Spa(roomSize, occupants, poolSize, poolTemp);
-    roomOrder.push(newRoom);
-    spaOrder.push(newSpa);
+    if (!selectors.spaNeededInput.checked) {
+        const newSpa = new Spa(roomSize, occupants, poolSize, poolTemp);
+        spaOrder.push(newSpa);
+    } else {
+        const newRoom = new Room(roomSize, occupants);
+        roomOrder.push(newRoom);
+    }
+
+
 
     console.log(roomOrder);
     console.log(spaOrder);

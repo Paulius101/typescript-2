@@ -9,65 +9,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TypeScript 1</title>
-    <script src="kebabai.js" defer></script>
-    <link href=" style.css" type="text/css" rel="stylesheet">
+    <script src="viesbutis.js" defer></script>
+    <link href="style1.scss" type="text/css" rel="stylesheet">
 </head>
 
 <body>
-    <form>
-        <input type="text" id="produktoPavadinimas" placeholder="Produkto pavadinimas">
-        <input type="number" id="produktoKaina" placeholder="Kaina">
-        <input type="number" id="produktoSvoris" placeholder="Svoris">
-
-        <button id="pridetiProdukta" type="button">Pridėti</button>
+    <form id="rooms" action="#">
+        <input type="number" id="roomSize" placeholder="Room size in m2">
+        <input type="number" id="numberOfOccupants" placeholder="Number of occupants">
+        <input type="checkbox" id="spaNeeded" placeholder="Pool (optional)">
     </form>
 
-    <div class="menu">
-        <div class="card">
-            <h2>Produktas</h2>
+    <form id="roomsWithSpa" action="#">
+        <input type="number" id="spaSize" placeholder="Pool size in m2">
+        <input type="range" id="spaTemperature" name="temperature" min="10" max="45" oninput="this.nextElementSibling.value = this.value">
+        <output>17</output>
+        <label for="temperature">°C</label>
+    </form>
 
-            <ul>
-                <li>Kaina: 2 eur.</li>
-                <li>Svoris: 200 g.</li>
-            </ul>
-        </div>
+    <button type="button" id="button">Order</button>
 
-        <div class="card">
-            <h2>Produktas</h2>
 
-            <ul>
-                <li>Kaina: 2 eur.</li>
-                <li>Svoris: 200 g.</li>
-            </ul>
-        </div>
 
-        <div class="card">
-            <h2>Produktas</h2>
-
-            <ul>
-                <li>Kaina: 2 eur.</li>
-                <li>Svoris: 200 g.</li>
-            </ul>
-        </div>
-
-        <div class="card">
-            <h2>Produktas</h2>
-
-            <ul>
-                <li>Kaina: 2 eur.</li>
-                <li>Svoris: 200 g.</li>
-            </ul>
-        </div>
-
-        <div class="card">
-            <h2>Produktas</h2>
-
-            <ul>
-                <li>Kaina: 2 eur.</li>
-                <li>Svoris: 200 g.</li>
-            </ul>
-        </div>
-    </div>
 </body>
 
 </html>

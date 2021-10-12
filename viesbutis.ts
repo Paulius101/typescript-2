@@ -112,7 +112,7 @@ const hotel = new Hotel("Urvas", "Urviniu g. 17", 5);
 const room = new Room(roomSizes.vienvietis, capacityOptions.vienas);
 const room1 = new Room(roomSizes.dvivietis, capacityOptions.du);
 const room3 = new Room(roomSizes.dvivietis, capacityOptions.keturi)
-const spa = new Spa(roomSizes.dvivietis,capacityOptions.trys,2, 39);
+const spa = new Spa(roomSizes.dvivietis,capacityOptions.trys,10, 39);
 hotel.addRoom(room);
 hotel.addRoom(room1);
 hotel.addRoom(spa);

@@ -15,21 +15,29 @@
 </head>
 
 <body>
-    <form id="rooms" action="#">
-        <input type="number" id="roomSize" placeholder="Room size in m2">
-        <input type="number" id="numberOfOccupants" placeholder="Number of occupants">
-        <input type="checkbox" id="spaNeeded" placeholder="Pool (optional)">
-    </form>
+    <div class="hero">
+        <form id="rooms" action="#">
+            <input type="number" id="roomSize" placeholder="Room size in m2">
+            <input type="number" id="numberOfOccupants" placeholder="Number of occupants">
+            <input type="checkbox" id="spaNeeded" placeholder="Pool (optional)">
+        </form>
 
-    <form id="roomsWithSpa" action="#">
-        <input type="number" id="spaSize" placeholder="Pool size in m2">
-        <input type="range" id="spaTemperature" name="temperature" min="10" max="45" oninput="this.nextElementSibling.value = this.value">
-        <output>17</output>
-        <label for="temperature">°C</label>
-    </form>
+        <form id="roomsWithSpa" class="hidden" action="#">
+            <input type="number" id="spaSize" placeholder="Pool size in m2">
+            <div class="slider">
+                <input type="range" id="spaTemperature" name="temperature" min="10" max="45" oninput="this.nextElementSibling.value = this.value">
+                <div class="sliderResult">
+                    <output>17</output>
+                    <label for="temperature">°C</label>
+                </div>
+            </div>
+        </form>
 
-    <button type="button" id="button">Order</button>
+        <button type="button" id="button">Order</button>
+    </div>
 
+    <div class="orders">
+    </div>
 
 
 </body>

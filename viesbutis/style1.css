@@ -1,1 +1,71 @@
-/* No CSS */
+body {
+  background-color: #81ecec;
+}
+
+body .hero {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  max-width: 800px;
+  margin: 50px auto 50px auto;
+}
+
+body .hero form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 10px;
+}
+
+body .hero input {
+  padding: 0 10px;
+  line-height: 36px;
+  font-size: 22px;
+}
+
+body .hero #roomsWithSpa .slider {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  max-width: 800px;
+}
+
+body .hero #roomsWithSpa .slider input {
+  width: 90%;
+}
+
+body .hero #roomsWithSpa .slider .sliderResult {
+  display: inline-block;
+  margin-left: 2%;
+}
+
+body .hero button {
+  width: 50%;
+  margin: 20px 200px;
+  padding: 10px 40px;
+  border-radius: 13px;
+  line-height: 36px;
+  font-size: 22px;
+  background-color: #fab1a0;
+  border: 2px;
+  -webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+          box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+body .hero button:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  cursor: pointer;
+}

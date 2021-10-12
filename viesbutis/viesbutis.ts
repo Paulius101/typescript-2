@@ -39,7 +39,7 @@ class Spa extends Room {
     public readonly poolSize: number;
     public readonly poolTemperature: number;
 
-    constructor(size: number, capacity:number, poolSize: number, poolTemperature: number) {
+    constructor(size: number, capacity: number, poolSize: number, poolTemperature: number) {
         //super manau turetu paimti is Room kas ideta, o ne hardcodint.
         super(size, capacity)
         this.poolSize = poolSize;
@@ -112,7 +112,7 @@ const hotel = new Hotel("Urvas", "Urviniu g. 17", 5);
 const room = new Room(roomSizes.vienvietis, capacityOptions.vienas);
 const room1 = new Room(roomSizes.dvivietis, capacityOptions.du);
 const room3 = new Room(roomSizes.dvivietis, capacityOptions.keturi)
-const spa = new Spa(roomSizes.dvivietis,capacityOptions.trys,10, 39);
+const spa = new Spa(roomSizes.dvivietis, capacityOptions.trys, 10, 39);
 hotel.addRoom(room);
 hotel.addRoom(room1);
 hotel.addRoom(spa);
@@ -120,4 +120,24 @@ spa.printData()
 hotel.printData();
 hotel.printData(true);
 
+const selectors = {
+    roomSizeInput: document.getElementById('roomSize'),
+    occupantsInput: document.getElementById('numberOfOccupants'),
+    spaNeededInput: document.getElementById('spaNeeded'),
+    spaSizeInput: document.getElementById('spaSize'),
 
+}
+
+const rooms: Room[] = [];
+
+selectors.addButton.addEventListener("click", (e) => {
+    const pavadinimas = UI.nameInput.value;
+    const svoris = Number(UI.weightInput.value);
+    const kaina = Number(UI.priceInput.value);
+
+    const naujasProduktas = new Produktas(pavadinimas, svoris, kaina);
+
+    produktai.push(naujasProduktas);
+
+    console.log(produktai);
+});

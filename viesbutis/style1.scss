@@ -1,0 +1,69 @@
+$bgColor: #81ecec;
+$bgColorButton:#fab1a0;
+
+body {
+    background-color: $bgColor;
+
+    .hero {
+        display: flex;
+        flex-direction: column;
+        max-width: 800px;
+        margin: 50px auto 50px auto;
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        input {
+            padding: 0 10px;
+            line-height: 36px;
+            font-size: 22px
+        }
+
+        // .hidden {
+        //     display: none;
+        // }
+
+        #roomsWithSpa {
+            .slider {
+                display: flex;
+                flex-direction: row;
+                max-width: 800px;
+
+                input {
+                    width: 90%;
+                }
+
+                .sliderResult {
+                    display: inline-block;
+                    margin-left: 2%;
+                }
+            }
+        }
+
+        button {
+            width: 50%;
+            margin: 20px 200px;
+            padding: 10px 40px;
+            border-radius: 13px;
+            line-height: 36px;
+            font-size: 22px;
+            background-color: $bgColorButton;
+            border: 2px;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16),
+                0 3px 6px rgba(0, 0, 0, 0.23);
+            ;
+        }
+
+        button:hover {
+            transform: scale(1.1);
+            cursor: pointer;
+        }
+
+    }
+
+
+
+}

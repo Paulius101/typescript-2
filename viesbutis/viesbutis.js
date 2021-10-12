@@ -81,14 +81,36 @@ class Hotel {
         }
     }
 }
-const hotel = new Hotel("Urvas", "Urviniu g. 17", 5);
-const room = new Room(roomSizes.vienvietis, capacityOptions.vienas);
-const room1 = new Room(roomSizes.dvivietis, capacityOptions.du);
-const room3 = new Room(roomSizes.dvivietis, capacityOptions.keturi);
-const spa = new Spa(roomSizes.dvivietis, capacityOptions.trys, 10, 39);
-hotel.addRoom(room);
-hotel.addRoom(room1);
-hotel.addRoom(spa);
-spa.printData();
-hotel.printData();
-hotel.printData(true);
+const selectors = {
+    roomSizeInput: document.getElementById('roomSize'),
+    occupantsInput: document.getElementById('numberOfOccupants'),
+    spaNeededInput: document.getElementById('spaNeeded'),
+    spaSizeInput: document.getElementById('spaSize'),
+    temperatureInput: document.getElementById('spaTemperature'),
+    button: document.getElementById('button'),
+    roomWithSpa: document.getElementById('roomsWithSpa')
+};
+const roomOrder = [];
+const spaOrder = [];
+if (!selectors.spaNeededInput.checked) {
+    selectors.spaNeededInput.addEventListener("click", (e) => {
+        selectors.roomWithSpa.classList.remove('hidden');
+    });
+}
+if (selectors.spaNeededInput.checked) {
+    selectors.spaNeededInput.addEventListener("click", (e) => {
+        selectors.roomWithSpa.classList.add('hidden');
+    });
+}
+selectors.button.addEventListener("click", (e) => {
+    const roomSize = Number(selectors.roomSizeInput.value);
+    const occupants = Number(selectors.occupantsInput.value);
+    const poolSize = Number(selectors.spaSizeInput.value);
+    const poolTemp = Number(selectors.temperatureInput.value);
+    const newRoom = new Room(roomSize, occupants);
+    const newSpa = new Spa(roomSize, occupants, poolSize, poolTemp);
+    roomOrder.push(newRoom);
+    spaOrder.push(newSpa);
+    console.log(roomOrder);
+    console.log(spaOrder);
+});

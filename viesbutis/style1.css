@@ -31,10 +31,15 @@ body .hero input {
   font-size: 22px;
 }
 
+body .hero .hidden {
+  display: none;
+}
+
 body .hero #roomsWithSpa .slider {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  margin-top: 20px;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
@@ -44,11 +49,7 @@ body .hero #roomsWithSpa .slider {
 
 body .hero #roomsWithSpa .slider input {
   width: 90%;
-}
-
-body .hero #roomsWithSpa .slider .sliderResult {
-  display: inline-block;
-  margin-left: 2%;
+  margin-right: 5%;
 }
 
 body .hero button {

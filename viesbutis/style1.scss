@@ -22,24 +22,22 @@ body {
             font-size: 22px
         }
 
-        // .hidden {
-        //     display: none;
-        // }
+        .hidden {
+            display: none;
+        }
 
         #roomsWithSpa {
             .slider {
                 display: flex;
+                margin-top: 20px;
                 flex-direction: row;
                 max-width: 800px;
 
                 input {
                     width: 90%;
+                    margin-right: 5%;
                 }
 
-                .sliderResult {
-                    display: inline-block;
-                    margin-left: 2%;
-                }
             }
         }
 

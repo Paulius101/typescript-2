@@ -92,16 +92,14 @@ const selectors = {
 };
 const roomOrder = [];
 const spaOrder = [];
-if (!selectors.spaNeededInput.checked) {
-    selectors.spaNeededInput.addEventListener("click", (e) => {
+selectors.spaNeededInput.addEventListener("click", (e) => {
+    if (!selectors.spaNeededInput.checked) {
         selectors.roomWithSpa.classList.remove('hidden');
-    });
-}
-if (selectors.spaNeededInput.checked) {
-    selectors.spaNeededInput.addEventListener("click", (e) => {
+    }
+    else {
         selectors.roomWithSpa.classList.add('hidden');
-    });
-}
+    }
+});
 selectors.button.addEventListener("click", (e) => {
     const roomSize = Number(selectors.roomSizeInput.value);
     const occupants = Number(selectors.occupantsInput.value);

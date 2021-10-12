@@ -78,14 +78,18 @@ class Kebabas extends Produktas {
         console.log("================");
     }
 }
-const bulvytes = new Bulvytes(14, BulvytesTipas.Puseles);
-const kebabas = new Kebabas(667);
-const velniskasPadazas = new Padazas(PadazoTipas.Astrus, "Velniskas");
-const dieviskasPadazas = new Padazas(PadazoTipas.Cesnakinis, "Dieviskas");
-kebabas.pridetiPadaza(velniskasPadazas);
-kebabas.pridetiPadaza(dieviskasPadazas);
-kebabas.spausdintiDuomenis();
-var PitosTipas;
-(function (PitosTipas) {
-    PitosTipas[PitosTipas["PilnoGrudo"] = 0] = "PilnoGrudo";
-})(PitosTipas || (PitosTipas = {}));
+const UI = {
+    nameInput: document.getElementById("produktoPavadinimas"),
+    priceInput: document.getElementById("produktoKaina"),
+    weightInput: document.getElementById("produktoSvoris"),
+    addButton: document.getElementById("pridetiProdukta"),
+};
+const produktai = [];
+UI.addButton.addEventListener("click", (e) => {
+    const pavadinimas = UI.nameInput.value;
+    const svoris = Number(UI.weightInput.value);
+    const kaina = Number(UI.priceInput.value);
+    const naujasProduktas = new Produktas(pavadinimas, svoris, kaina);
+    produktai.push(naujasProduktas);
+    console.log(produktai);
+});

@@ -5,8 +5,8 @@ class Produktas {
     protected readonly barcode: number;
 
     public constructor(pavadinimas: string,
-        svoris: number,
-        kaina: number) {
+                       svoris: number,
+                       kaina: number) {
 
         this.kaina = kaina;
         this.svoris = svoris;
@@ -26,8 +26,8 @@ class Produktas {
 // Enum - https://www.typescriptlang.org/docs/handbook/enums.html
 enum BulvytesTipas {
     Lazdeles = "lzdl",
-        Laiveliai = "lvl",
-        Puseles = "psls"
+    Laiveliai = "lvl",
+    Puseles = "psls"
 }
 
 // Public - metodą arba atributą gali pasiekti bet kas
@@ -61,7 +61,7 @@ class Bulvytes extends Produktas {
     public readonly tipas: BulvytesTipas;
 
     constructor(kiekis: number,
-        tipas: BulvytesTipas = BulvytesTipas.Lazdeles) {
+                tipas: BulvytesTipas = BulvytesTipas.Lazdeles) {
         // https://www.typescriptlang.org/docs/handbook/2/classes.html#super-calls
         super("Bulvytės", 150, 2);
 
@@ -89,7 +89,7 @@ enum PadazoTipas {
 
 class Padazas extends Produktas {
     constructor(public readonly tipas: PadazoTipas,
-        pavadinimas: string) {
+                pavadinimas: string) {
         super(pavadinimas, 40, 0.6);
     }
 
@@ -125,16 +125,24 @@ class Kebabas extends Produktas {
     }
 }
 
-const bulvytes = new Bulvytes(14, BulvytesTipas.Puseles);
-
-const kebabas = new Kebabas(667);
-const velniskasPadazas = new Padazas(PadazoTipas.Astrus, "Velniskas");
-const dieviskasPadazas = new Padazas(PadazoTipas.Cesnakinis, "Dieviskas");
-kebabas.pridetiPadaza(velniskasPadazas);
-kebabas.pridetiPadaza(dieviskasPadazas);
-
-kebabas.spausdintiDuomenis();
-
-enum PitosTipas {
-    PilnoGrudo,
+const UI = {
+    // https://stackoverflow.com/questions/13204759/typescript-or-javascript-type-casting
+    nameInput: document.getElementById("produktoPavadinimas") as HTMLInputElement,
+    priceInput: document.getElementById("produktoKaina") as HTMLInputElement,
+    weightInput: document.getElementById("produktoSvoris") as HTMLInputElement,
+    addButton: document.getElementById("pridetiProdukta") as HTMLButtonElement,
 }
+
+const produktai: Produktas[] = [];
+
+UI.addButton.addEventListener("click", (e) => {
+    const pavadinimas = UI.nameInput.value;
+    const svoris = Number(UI.weightInput.value);
+    const kaina = Number(UI.priceInput.value);
+
+    const naujasProduktas = new Produktas(pavadinimas, svoris, kaina);
+
+    produktai.push(naujasProduktas);
+
+    console.log(produktai);
+});

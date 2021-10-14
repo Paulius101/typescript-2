@@ -18,6 +18,10 @@ body {
     .left_clm {
         width: 30%;
 
+        .hide {
+            display: none;
+        }
+
         form {
             background-color: $bgColorElement;
             display: flex;

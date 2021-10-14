@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masinos</title>
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="left_clm">
+
+        <div class="form" id="add_car">
+            <form>
+                <input type="text" placeholder="Modelis">
+                <input type="date" placeholder="Pagaminimo data">
+                <input type="text" placeholder="Spalva">
+                <input list="fuel" name="fuelTypes" placeholder="Kuro tipas">
+                <datalist id="fuel">
+                    <option value="${Dyzelinas}">
+                    <option value="${Benzinas}">
+                </datalist>
+                <div class="mygtukai">
+                    <button id="save" type="button">Prideti</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="form hide" id="update_car">
+            <form>
+                <input type="text" placeholder="Modelis">
+                <input type="date" placeholder="Pagaminimo data">
+                <input type="text" placeholder="Spalva">
+                <input list="fuel" name="fuelTypes" placeholder="Kuro tipas">
+                <datalist id="fuel">
+                    <option value="${Dyzelinas}">
+                    <option value="${Benzinas}">
+                </datalist>
+
+                <button class="save" type="button">Atnaujinti</button>
+
+            </form>
+        </div>
+
+    </div>
+
+    <div class="right_clm">
+
+        <div class="filters">
+            <button type="button">Visi automobiliai</button>
+            <button type="button">Dyzeliniai automobiliai</button>
+            <button type="button">Benzininiai automobiliai</button>
+        </div>
+
+        <div class="titles">
+            <div class="model">
+                <h2>Modelis</h2>
+            </div>
+            <div class="date">
+                <h2>Pagaminimo data</h2>
+            </div>
+            <div class="color">
+                <h2>Spalva</h2>
+            </div>
+            <div class="fuel">
+                <h2>Kuro tipas</h2>
+            </div>
+            <div class="actions">
+            </div>
+        </div>
+
+        <div class="list">
+            <div id="ivestis_id" class="entry">
+                <div class="entry_parameter">${model}</div>
+                <div class="entry_parameter">${date}</div>
+                <div class="entry_parameter">${color}</div>
+                <div class="entry_parameter">${fuel}</div>
+                <div class="actions">
+                    <img id="edit" src="./edit.png" alt="Atnaujinti">
+                    <img id="delete" src="./delete.png" alt="Istrinti">
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

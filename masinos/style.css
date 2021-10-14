@@ -1,0 +1,4 @@
+body {
+  background-image: -webkit-gradient(linear, left top, right bottom, from(#c33764), to(#1d2671));
+  background-image: linear-gradient(to bottom right, #c33764, #1d2671);
+}

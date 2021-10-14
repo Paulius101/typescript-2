@@ -1,7 +1,7 @@
 {
     "compileOnSave": true,
     "include": [
-        "./*", "viesbutis/viesbutis.ts", "viesbutis/viesbutis.js"
+        "./*", "viesbutis/viesbutis.ts", "viesbutis/viesbutis.js", "trikampiai/trikampiai.ts", "trikampiai/trikampiai.js"
     ],
     "compilerOptions": {
         "target": "ES6",

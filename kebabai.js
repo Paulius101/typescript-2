@@ -14,7 +14,7 @@ class Produktas {
                 <div class="card">
                     <div class="controls">
                         <img onclick="istrintiProdukta(${this._barcode})" class="icon delete" src="https://cdn-icons-png.flaticon.com/512/1214/1214428.png">
-                        <img onclick="kopijuotiProdukta()" class="icon copy" src="https://cdn-icons-png.flaticon.com/512/54/54702.png">
+                        <img onclick="kopijuotiProdukta(${this._barcode})" class="icon copy" src="https://cdn-icons-png.flaticon.com/512/54/54702.png">
                     </div>
                 
                     <h2>${this.pavadinimas}</h2>
@@ -120,8 +120,16 @@ function atvaizduotiProduktus() {
         produktas.spausdintiDuomenis(UI.menuContainer);
     }
 }
-function kopijuotiProdukta() {
+function kopijuotiProdukta(barcode) {
     console.log("Kopijuoti produktą...");
+    for (const produktas of produktai) {
+        if (produktas.barcode === barcode) {
+            const naujasProduktas = new Produktas(produktas.pavadinimas, produktas.svoris, produktas.kaina);
+            produktai.push(naujasProduktas);
+            naujasProduktas.spausdintiDuomenis(UI.menuContainer);
+            return;
+        }
+    }
 }
 function istrintiProdukta(barcode) {
     console.log("Trinti produktą...", barcode);

@@ -1,3 +1,4 @@
+"use strict";
 var roomSizes;
 (function (roomSizes) {
     roomSizes[roomSizes["vienvietis"] = 15] = "vienvietis";
@@ -29,6 +30,7 @@ class Room {
 }
 class Spa extends Room {
     constructor(size, capacity, poolSize, poolTemperature) {
+        //super manau turetu paimti is Room kas ideta, o ne hardcodint.
         super(size, capacity);
         this.poolSize = poolSize;
         this.poolTemperature = poolTemperature;
@@ -81,6 +83,17 @@ class Hotel {
         }
     }
 }
+// const hotel = new Hotel("Urvas", "Urviniu g. 17", 5);
+// const room = new Room(roomSizes.vienvietis, capacityOptions.vienas);
+// const room1 = new Room(roomSizes.dvivietis, capacityOptions.du);
+// const room3 = new Room(roomSizes.dvivietis, capacityOptions.keturi)
+// const spa = new Spa(roomSizes.dvivietis, capacityOptions.trys, 10, 39);
+// hotel.addRoom(room);
+// hotel.addRoom(room1);
+// hotel.addRoom(spa);
+// spa.printData()
+// hotel.printData();
+// hotel.printData(true);
 const selectors = {
     roomSizeInput: document.getElementById('roomSize'),
     occupantsInput: document.getElementById('numberOfOccupants'),

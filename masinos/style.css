@@ -139,7 +139,7 @@ body .right_clm .titles .actions {
   margin-left: 120px;
 }
 
-body .right_clm .list {
+body .right_clm #list {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -150,7 +150,7 @@ body .right_clm .list {
   margin-top: 5px;
 }
 
-body .right_clm .list .entry {
+body .right_clm #list .entry {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -167,16 +167,16 @@ body .right_clm .list .entry {
           align-items: center;
 }
 
-body .right_clm .list .entry .entry_parameter:first-of-type {
+body .right_clm #list .entry .entry_parameter:first-of-type {
   margin-left: 15px;
 }
 
-body .right_clm .list .entry .entry_parameter {
+body .right_clm #list .entry .entry_parameter {
   margin-top: 5px;
   margin-bottom: 5px;
 }
 
-body .right_clm .list .entry .actions {
+body .right_clm #list .entry .actions {
   margin-left: 40px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -186,16 +186,16 @@ body .right_clm .list .entry .actions {
           align-items: center;
 }
 
-body .right_clm .list .entry .actions img {
+body .right_clm #list .entry .actions img {
   width: 20px;
   height: auto;
   margin: 5px 5px;
 }
 
-body .right_clm .list .entry .actions img:hover {
+body .right_clm #list .entry .actions img:hover {
   cursor: pointer;
 }
 
-body .right_clm .list .entry:hover {
+body .right_clm #list .entry:hover {
   opacity: 1;
 }

@@ -3,30 +3,22 @@
 //     benzinas = "Benzinas",
 //         dyzelinas = "Dyzelinas",
 // }
-class Cars {
-    constructor(model, date, color, fuel) {
+var Cars = /** @class */ (function () {
+    function Cars(model, date, color, fuel) {
         this.model = model;
         this.date = date;
         this.color = color;
         this.fuel = fuel;
     }
-    printEntry(element) {
+    Cars.prototype.printEntry = function (element) {
         if (element) {
-            element.innerHTML += `<div id="ivestis_id" class="entry">
-                <div class="entry_parameter">${this.model}</div>
-                <div class="entry_parameter">${this.date}</div>
-                <div class="entry_parameter">${this.color}</div>
-                <div class="entry_parameter">${this.fuel}</div>
-                <div class="actions">
-                    <img id="edit" src="./edit.png" alt="Atnaujinti">
-                    <img id="delete" src="./delete.png" alt="Istrinti">
-                </div>
-            </div>`;
+            element.innerHTML += "<div id=\"ivestis_id\" class=\"entry\">\n                <div class=\"entry_parameter\">" + this.model + "</div>\n                <div class=\"entry_parameter\">" + this.date + "</div>\n                <div class=\"entry_parameter\">" + this.color + "</div>\n                <div class=\"entry_parameter\">" + this.fuel + "</div>\n                <div class=\"actions\">\n                    <img id=\"edit\" src=\"./edit.png\" alt=\"Atnaujinti\">\n                    <img id=\"delete\" src=\"./delete.png\" alt=\"Istrinti\">\n                </div>\n            </div>";
         }
-    }
-}
-let cars = [];
-const DOMs = {
+    };
+    return Cars;
+}());
+var cars = [];
+var DOMs = {
     listDOM: document.getElementById('list'),
     modelInput: document.getElementById('model'),
     dateInput: document.getElementById('date'),
@@ -34,19 +26,20 @@ const DOMs = {
     fuelInput: document.getElementById('fuel'),
     saveButton: document.getElementById('save'),
 };
-DOMs.saveButton.addEventListener("click", () => {
-    const model = DOMs.modelInput.value;
-    const date = DOMs.dateInput.value;
-    const color = DOMs.colorInput.value;
-    const fuel = DOMs.fuelInput.value;
-    const newCar = new Cars(model, date, color, fuel);
+DOMs.saveButton.addEventListener("click", function () {
+    var model = DOMs.modelInput.value;
+    var date = DOMs.dateInput.value;
+    var color = DOMs.colorInput.value;
+    var fuel = DOMs.fuelInput.value;
+    var newCar = new Cars(model, date, color, fuel);
     cars.push(newCar);
     console.log(cars);
     display();
 });
 function display() {
     DOMs.listDOM.innerHTML = "";
-    for (const car of cars) {
+    for (var _i = 0, cars_1 = cars; _i < cars_1.length; _i++) {
+        var car = cars_1[_i];
         car.printEntry(DOMs.listDOM);
     }
     console.log("display");

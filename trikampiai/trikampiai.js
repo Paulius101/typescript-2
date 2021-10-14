@@ -36,46 +36,60 @@
  * Papildoma: Vėliau programa masyvą prafiltravus
  * paliktų tik egzistuojančius trikampius ir atspausdintų jų duomenis.
  */
-class Trikampis {
-    constructor(a, b, c) {
+var Trikampis = /** @class */ (function () {
+    function Trikampis(a, b, c) {
         this.a = a;
         this.b = b;
         this.c = c;
     }
-    spasudintiDuomenis() {
-        console.log(`Krastine a: ${this.a}`);
-        console.log(`Krastine b: ${this.b}`);
-        console.log(`Krastine b: ${this.c}`);
-        console.log(`Perimetras: ${this.perimetras}`);
+    Trikampis.prototype.spasudintiDuomenis = function () {
+        console.log("Krastine a: " + this.a);
+        console.log("Krastine b: " + this.b);
+        console.log("Krastine b: " + this.c);
+        console.log("Perimetras: " + this.perimetras);
         if (this.arTrikampisEgzistuoja) {
             console.log("Trikampis egzistuoja!");
         }
         else {
             console.log("Trikampis neegzistuoja!");
         }
-        console.log(`Trikampis ${this.arTrikampisEgzistuoja ? "egzistuoja" : "neegzistuoja"}.`);
-        console.log(`Trikampis ${this.arStatus ? "yra" : "nera"} statusis.`);
+        console.log("Trikampis " + (this.arTrikampisEgzistuoja ? "egzistuoja" : "neegzistuoja") + ".");
+        console.log("Trikampis " + (this.arStatus ? "yra" : "nera") + " statusis.");
         console.log("---------");
-    }
-    get perimetras() {
-        return this.a + this.b + this.c;
-    }
-    get arStatus() {
-        const a2 = this.a * this.a;
-        const b2 = this.b * this.b;
-        const c2 = this.c * this.c;
-        return a2 + b2 === c2 ||
-            a2 + c2 === b2 ||
-            b2 + c2 === a2;
-    }
-    get arTrikampisEgzistuoja() {
-        return this.a + this.b > this.c &&
-            this.b + this.c > this.a &&
-            this.a + this.c > this.b;
-    }
-}
-const trikampiai = [new Trikampis(3, 4, 5)];
+    };
+    Object.defineProperty(Trikampis.prototype, "perimetras", {
+        get: function () {
+            return this.a + this.b + this.c;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(Trikampis.prototype, "arStatus", {
+        get: function () {
+            var a2 = this.a * this.a;
+            var b2 = this.b * this.b;
+            var c2 = this.c * this.c;
+            return a2 + b2 === c2 ||
+                a2 + c2 === b2 ||
+                b2 + c2 === a2;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(Trikampis.prototype, "arTrikampisEgzistuoja", {
+        get: function () {
+            return this.a + this.b > this.c &&
+                this.b + this.c > this.a &&
+                this.a + this.c > this.b;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    return Trikampis;
+}());
+var trikampiai = [new Trikampis(3, 4, 5)];
 trikampiai.push(new Trikampis(6, 3, 8));
-for (const trikampis of trikampiai) {
+for (var _i = 0, trikampiai_1 = trikampiai; _i < trikampiai_1.length; _i++) {
+    var trikampis = trikampiai_1[_i];
     trikampis.spasudintiDuomenis();
 }

@@ -11,8 +11,9 @@ body {
     flex-direction: row;
     flex-wrap: wrap;
     gap: 4%;
-    max-width: 1240px;
-    margin: 40px calc(50% - 620px);
+    max-width: 1000px;
+    margin: 40px calc(50% - 500px);
+
 
     .left_clm {
         width: 30%;
@@ -75,7 +76,7 @@ body {
                 border: none;
                 border-radius: 3px;
                 line-height: 18px;
-                padding: 10px 50px;
+                padding: 10px 20px;
             }
 
             button:hover {

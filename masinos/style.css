@@ -10,8 +10,8 @@ body {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   gap: 4%;
-  max-width: 1240px;
-  margin: 40px calc(50% - 620px);
+  max-width: 1000px;
+  margin: 40px calc(50% - 500px);
 }
 
 body .left_clm {
@@ -101,7 +101,7 @@ body .right_clm .filters button {
   border: none;
   border-radius: 3px;
   line-height: 18px;
-  padding: 10px 50px;
+  padding: 10px 20px;
 }
 
 body .right_clm .filters button:hover {

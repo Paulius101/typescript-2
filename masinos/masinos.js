@@ -7,25 +7,14 @@ var fuelTypes;
 var formSaveDOM = document.getElementById('add_car');
 var formUpdateDOM = document.getElementById('update_car');
 var listDOM = document.getElementById('list');
+var modelInputUpdate = formUpdateDOM.querySelector('model');
+var dateInputUpdate = formUpdateDOM.querySelector('date');
+var colorInputUpdate = formUpdateDOM.querySelector('color');
+var fuelInputUpdate = formUpdateDOM.querySelector('fuel');
 function renderAddForm() {
     return formSaveDOM.innerHTML = "<form>\n                <input id=\"model\" type=\"text\" placeholder=\"Modelis\">\n                <input id=\"date\" type=\"date\" placeholder=\"Pagaminimo data\">\n                <input id=\"color\" type=\"text\" placeholder=\"Spalva\">\n                <input id=\"fuel\" list=\"fuelList\" name=\"fuelTypes\" placeholder=\"Kuro tipas\">\n                <datalist id=\"fuelList\">\n                    <option value=\"" + fuelTypes.benzinas + "\">\n                    <option value=\"" + fuelTypes.dyzelinas + "\">\n                </datalist>\n\n                <button id=\"save\" type=\"button\">Prideti</button>\n            </form>";
 }
-function renderUpdateForm() {
-    return formUpdateDOM.innerHTML = " <form>\n                <input id=\"model\" type=\"text\" placeholder=\"Modelis\">\n                <input id=\"date\" type=\"date\" placeholder=\"Pagaminimo data\">\n                <input id=\"color\" type=\"text\" placeholder=\"Spalva\">\n                <input id=\"fuel\" list=\"fuel\" name=\"fuelTypes\" placeholder=\"Kuro tipas\">\n                <datalist id=\"fuelTypes\">\n                    <option value=\"" + fuelTypes.benzinas + "\">\n                    <option value=\"" + fuelTypes.dyzelinas + "\">\n                </datalist>\n\n                <button class=\"save\" type=\"button\">Atnaujinti</button>\n            </form>";
-}
 renderAddForm();
-renderUpdateForm();
-function display() {
-    listDOM.innerHTML = "";
-    for (var _i = 0, cars_1 = cars; _i < cars_1.length; _i++) {
-        var car = cars_1[_i];
-        car.printEntry(listDOM);
-    }
-    var imgDOM = listDOM.querySelector(".entry .actions .edit");
-    var deleteDOM = listDOM.querySelector(".entry .actions .delete");
-    console.log(imgDOM);
-    console.log(deleteDOM);
-}
 var DOMs = {
     modelInput: document.getElementById('model'),
     dateInput: document.getElementById('date'),
@@ -48,8 +37,11 @@ var Cars = /** @class */ (function () {
     };
     Cars.prototype.printEntry = function (element) {
         if (element) {
-            element.innerHTML += "<div id=\"" + this.generateID() + "\" class=\"entry\">\n                <div class=\"entry_parameter\">" + this.model + "</div>\n                <div class=\"entry_parameter\">" + this.date + "</div>\n                <div class=\"entry_parameter\">" + this.color + "</div>\n                <div class=\"entry_parameter\">" + this.fuel + "</div>\n                <div class=\"actions\">\n                    <img class=\"edit\" src=\"./edit.png\" alt=\"Atnaujinti\">\n                    <img class=\"delete\" src=\"./delete.png\" alt=\"Istrinti\">\n                </div>\n            </div>";
+            element.innerHTML += "<div id=\"" + this.generateID() + "\" class=\"entry\">\n                <div class=\"entry_parameter\">" + this.model + "</div>\n                <div class=\"entry_parameter\">" + this.date + "</div>\n                <div class=\"entry_parameter\">" + this.color + "</div>\n                <div class=\"entry_parameter\">" + this.fuel + "</div>\n                <div class=\"actions\">\n                    <img onclick=\"editEntry(" + this.id + ")\" class=\"edit\" src=\"./edit.png\" alt=\"Atnaujinti\">\n                    <img onclick=\"deleteEntry(" + this.id + ")\" class=\"delete\" src=\"./delete.png\" alt=\"Istrinti\">\n                </div>\n            </div>";
         }
+    };
+    Cars.prototype.renderUpdateForm = function () {
+        return formUpdateDOM.innerHTML = " <form>\n                <input id=\"model\" type=\"text\" placeholder=\"" + this.model + "\">\n                <input id=\"date\" type=\"date\" placeholder=\"" + this.date + "\">\n                <input id=\"color\" type=\"text\" placeholder=\"" + this.color + "\">\n                <input id=\"fuel\" list=\"fuel\" name=\"fuelTypes\" placeholder=\"" + this.fuel + "\">\n                <datalist id=\"fuelTypes\">\n                    <option value=\"" + fuelTypes.benzinas + "\">\n                    <option value=\"" + fuelTypes.dyzelinas + "\">\n                </datalist>\n\n                <button onclick=\"updateEntry(" + this.id + ")\" class=\"save\" type=\"button\">Atnaujinti</button>\n            </form>";
     };
     return Cars;
 }());
@@ -64,10 +56,32 @@ DOMs.saveFormButton.addEventListener("click", function () {
     console.log(cars);
     display();
     renderAddForm();
+    newCar.renderUpdateForm();
 });
-imgDOM.addEventListener("click", function () {
+function display() {
+    listDOM.innerHTML = "";
+    for (var _i = 0, cars_1 = cars; _i < cars_1.length; _i++) {
+        var car = cars_1[_i];
+        car.printEntry(listDOM);
+    }
+}
+function editEntry(id) {
     formSaveDOM.classList.add('hide');
     formUpdateDOM.classList.remove('hide');
-});
-DOMs.editFormButton.addEventListener("click", function () {
-});
+}
+function deleteEntry(id) {
+    cars = cars.filter(function (car) { return car.id !== id; });
+    display();
+}
+function updateEntry(id) {
+    var model = modelInputUpdate.value;
+    var date = dateInputUpdate.value;
+    var color = colorInputUpdate.value;
+    var fuel = fuelInputUpdate.value;
+    var newCar = new Cars(model, date, color, fuel);
+    cars.push(newCar);
+    console.log(cars);
+    formSaveDOM.classList.remove('hide');
+    formUpdateDOM.classList.add('hide');
+    display();
+}

@@ -6,6 +6,10 @@
  const formSaveDOM = document.getElementById('add_car') as HTMLElement
  const formUpdateDOM = document.getElementById('update_car') as HTMLElement
  const listDOM = document.getElementById('list') as HTMLElement
+ const modelInputUpdate = formUpdateDOM.querySelector('model') as HTMLInputElement
+ const dateInputUpdate = formUpdateDOM.querySelector('date') as HTMLInputElement
+ const colorInputUpdate = formUpdateDOM.querySelector('color') as HTMLInputElement
+ const fuelInputUpdate = formUpdateDOM.querySelector('fuel') as HTMLInputElement
 
  function renderAddForm(): string {
      return formSaveDOM.innerHTML = `<form>
@@ -22,34 +26,7 @@
             </form>`
  }
 
- function renderUpdateForm(): string {
-     return formUpdateDOM.innerHTML = ` <form>
-                <input id="model" type="text" placeholder="Modelis">
-                <input id="date" type="date" placeholder="Pagaminimo data">
-                <input id="color" type="text" placeholder="Spalva">
-                <input id="fuel" list="fuel" name="fuelTypes" placeholder="Kuro tipas">
-                <datalist id="fuelTypes">
-                    <option value="${fuelTypes.benzinas}">
-                    <option value="${fuelTypes.dyzelinas}">
-                </datalist>
-
-                <button class="save" type="button">Atnaujinti</button>
-            </form>`
- }
-
  renderAddForm()
- renderUpdateForm()
-
- function display(): void {
-     listDOM.innerHTML = "";
-     for (const car of cars) {
-         car.printEntry(listDOM)
-     }
-     const imgDOM = listDOM.querySelector(".entry .actions .edit")
-     const deleteDOM = listDOM.querySelector(".entry .actions .delete")
-     console.log(imgDOM);
-     console.log(deleteDOM);
- }
 
  const DOMs = {
      modelInput: document.getElementById('model') as HTMLInputElement,
@@ -60,12 +37,14 @@
      editFormButton: formUpdateDOM.querySelector('button') as HTMLElement,
  }
 
+
+
  class Cars {
      public readonly model: string;
      public readonly date: string;
      public readonly color: string;
      public readonly fuel: fuelTypes;
-     private id: number;
+     public id: number;
 
      constructor(model: string, date: string, color: string, fuel: fuelTypes = fuelTypes.benzinas, id ? : number) {
          this.model = model;
@@ -87,12 +66,29 @@
                 <div class="entry_parameter">${this.color}</div>
                 <div class="entry_parameter">${this.fuel}</div>
                 <div class="actions">
-                    <img class="edit" src="./edit.png" alt="Atnaujinti">
-                    <img class="delete" src="./delete.png" alt="Istrinti">
+                    <img onclick="editEntry(${this.id})" class="edit" src="./edit.png" alt="Atnaujinti">
+                    <img onclick="deleteEntry(${this.id})" class="delete" src="./delete.png" alt="Istrinti">
                 </div>
             </div>`
          }
      }
+
+
+     public renderUpdateForm(): string {
+         return formUpdateDOM.innerHTML = ` <form>
+                <input id="model" type="text" placeholder="${this.model}">
+                <input id="date" type="date" placeholder="${this.date}">
+                <input id="color" type="text" placeholder="${this.color}">
+                <input id="fuel" list="fuel" name="fuelTypes" placeholder="${this.fuel}">
+                <datalist id="fuelTypes">
+                    <option value="${fuelTypes.benzinas}">
+                    <option value="${fuelTypes.dyzelinas}">
+                </datalist>
+
+                <button onclick="updateEntry(${this.id})" class="save" type="button">Atnaujinti</button>
+            </form>`
+     }
+
  }
 
  let cars: Cars[] = [];
@@ -108,17 +104,40 @@
      cars.push(newCar)
      console.log(cars);
 
-     display()
-     renderAddForm()
+     display();
+     renderAddForm();
+     newCar.renderUpdateForm();
  })
 
- imgDOM.addEventListener("click", () => {
+ function display(): void {
+     listDOM.innerHTML = "";
+     for (const car of cars) {
+         car.printEntry(listDOM)
+     }
+ }
+
+ function editEntry(id: number): void {
      formSaveDOM.classList.add('hide');
      formUpdateDOM.classList.remove('hide')
- })
+ }
 
- 
+ function deleteEntry(id: number): void {
+     cars = cars.filter((car) => car.id !== id)
+     display()
+ }
 
- DOMs.editFormButton.addEventListener("click", () => {
+ function updateEntry(id: number): void {
+     const model = modelInputUpdate.value;
+     const date = dateInputUpdate.value;
+     const color = colorInputUpdate.value;
+     const fuel = fuelInputUpdate.value;
 
- })
+     const newCar = new Cars(model, date, color, fuel)
+
+     cars.push(newCar)
+     console.log(cars);
+
+     formSaveDOM.classList.remove('hide');
+     formUpdateDOM.classList.add('hide')
+     display();
+ }

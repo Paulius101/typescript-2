@@ -33,8 +33,12 @@
      dateInput: document.getElementById('date') as HTMLInputElement,
      colorInput: document.getElementById('color') as HTMLInputElement,
      fuelInput: document.getElementById('fuel') as HTMLInputElement,
-     saveFormButton: formSaveDOM.querySelector('button') as HTMLElement,
-     editFormButton: formUpdateDOM.querySelector('button') as HTMLElement,
+     saveFormButton: formSaveDOM.querySelector('button') as HTMLButtonElement,
+     editFormButton: formUpdateDOM.querySelector('button') as HTMLButtonElement,
+     allFilter: document.getElementById('all') as HTMLButtonElement,
+     dyzelFilter: document.getElementById('dyzel') as HTMLButtonElement,
+     benzFilter: document.getElementById('benz') as HTMLButtonElement,
+ )
  }
 
 
@@ -140,4 +144,26 @@
      formSaveDOM.classList.remove('hide');
      formUpdateDOM.classList.add('hide')
      display();
+ }
+
+ function filterAll(): void {
+     display()
+ }
+
+ function filterDyzel(): void {
+     let dyzel = [];
+     dyzel = cars.filter((car) => car.fuel === 'dyzelinas');
+     listDOM.innerHTML = "";
+     for (const car of dyzel) {
+         car.printEntry(listDOM)
+     }
+ }
+
+ function filterBenz(): void {
+let benz = [];
+     benz = cars.filter((car) => car.fuel === 'benzinas');
+     listDOM.innerHTML = "";
+     for (const car of benz) {
+         car.printEntry(listDOM)
+     }
  }

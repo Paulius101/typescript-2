@@ -22,6 +22,9 @@ var DOMs = {
     fuelInput: document.getElementById('fuel'),
     saveFormButton: formSaveDOM.querySelector('button'),
     editFormButton: formUpdateDOM.querySelector('button'),
+    allFilter: document.getElementById('all'),
+    dyzelFilter: document.getElementById('dyzel'),
+    benzFilter: document.getElementById('benz'),
 };
 var Cars = /** @class */ (function () {
     function Cars(model, date, color, fuel, id) {
@@ -84,4 +87,25 @@ function updateEntry(id) {
     formSaveDOM.classList.remove('hide');
     formUpdateDOM.classList.add('hide');
     display();
+}
+function filterAll() {
+    display();
+}
+function filterDyzel() {
+    var dyzel = [];
+    dyzel = cars.filter(function (car) { return car.fuel === 'dyzelinas'; });
+    listDOM.innerHTML = "";
+    for (var _i = 0, dyzel_1 = dyzel; _i < dyzel_1.length; _i++) {
+        var car = dyzel_1[_i];
+        car.printEntry(listDOM);
+    }
+}
+function filterBenz() {
+    var benz = [];
+    benz = cars.filter(function (car) { return car.fuel === 'benzinas'; });
+    listDOM.innerHTML = "";
+    for (var _i = 0, benz_1 = benz; _i < benz_1.length; _i++) {
+        var car = benz_1[_i];
+        car.printEntry(listDOM);
+    }
 }
